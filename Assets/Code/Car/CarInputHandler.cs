@@ -23,9 +23,11 @@ public class CarInputHandler : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        Debug.Log("on input");
-        var playerInput = new PlayerNetworkInput();
-        playerInput.MovementInput = _joystick.Direction;
+        var playerInput = new PlayerNetworkInput
+        {
+            MovementInput = _joystick.Direction
+        };
+        
         input.Set(playerInput);
     }
 
