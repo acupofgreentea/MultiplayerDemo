@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4977814202377810304}
   - component: {fileID: 790472870489966892}
   - component: {fileID: 6533096139090989367}
+  - component: {fileID: 6185898540508561496}
   m_Layer: 0
   m_Name: WreckingBall
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
   ObjectInterest: 1
   DefaultInterestGroups: []
   DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 0
+  AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
   Flags: 2305
   NetworkGuid:
@@ -94,6 +95,7 @@ MonoBehaviour:
   - {fileID: 4977814202377810304}
   - {fileID: 790472870489966892}
   - {fileID: 6533096139090989367}
+  - {fileID: 6185898540508561496}
   SimulationBehaviours: []
 --- !u!54 &5552862556774791521
 Rigidbody:
@@ -165,9 +167,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  lerpSpeed: 5
-  model: {fileID: 2536509785618333838}
-  radius: 0.614
+  <LerpSpeed>k__BackingField: 3
+  <Model>k__BackingField: {fileID: 0}
+  <Radius>k__BackingField: 0.3
+  <RotateSpeed>k__BackingField: 1000
+--- !u!114 &6185898540508561496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253428163767172014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e80880453fe4f7bb92ef45ede1e997f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!1001 &2646365383067969381
 PrefabInstance:
   m_ObjectHideFlags: 0
