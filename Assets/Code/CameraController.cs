@@ -4,26 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    
-    private CinemachineVirtualCamera cinemachine;
+    [SerializeField] private CinemachineVirtualCamera cinemachine;
 
-    private void Awake()
-    {
-        cinemachine = GetComponent<CinemachineVirtualCamera>();
-    }
 
-    private void Start()
+    public void OnPlayerSpawned(Transform player)
     {
-        PlayerSpawner.OnPlayerSpawned += OnPlayerSpawned;
-    }
-
-    private void OnPlayerSpawned(NetworkObject player)
-    {
-        cinemachine.Follow = player.transform;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerSpawner.OnPlayerSpawned -= OnPlayerSpawned;
+        cinemachine.Follow = player;
     }
 }
