@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using Fusion;
 using Fusion.Sockets;
+using UnityEngine;
 
-public class CarInputHandler : NetworkBehaviour, INetworkRunnerCallbacks
+public class CarInputHandler : MonoBehaviour, INetworkRunnerCallbacks
 {
     private Joystick _joystick;
 
     private void Awake()
     {
         _joystick = Joystick.Instance;
-    }
-
-    public override void Spawned()
-    {        
-        Runner.AddCallbacks(this);
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
@@ -29,7 +25,8 @@ public class CarInputHandler : NetworkBehaviour, INetworkRunnerCallbacks
     {
         var playerInput = new PlayerNetworkInput
         {
-            MovementInput = _joystick.Direction
+            MovementInput = _joystick.Direction,
+            HasInput = _joystick.HasInput
         };
         
         input.Set(playerInput);

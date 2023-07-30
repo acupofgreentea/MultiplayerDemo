@@ -178,7 +178,6 @@ GameObject:
   - component: {fileID: 6627123009601431202}
   - component: {fileID: 7763239182726120740}
   - component: {fileID: 680661632651089871}
-  - component: {fileID: 5780165304492568890}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -261,7 +260,6 @@ MonoBehaviour:
   - {fileID: 6627123009601431202}
   - {fileID: 7763239182726120740}
   - {fileID: 680661632651089871}
-  - {fileID: 5780165304492568890}
   SimulationBehaviours: []
 --- !u!114 &31037014513328482
 MonoBehaviour:
@@ -339,19 +337,6 @@ MonoBehaviour:
   _interpolationDataSource: 0
   lineRenderer: {fileID: 8842514343333043758}
   carRopeStartPosition: {fileID: 7035590695354479639}
---- !u!114 &5780165304492568890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7763239182726120741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba8b9332462b42e3a927309ead53a612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
 --- !u!1 &8877391978725223634
 GameObject:
   m_ObjectHideFlags: 0

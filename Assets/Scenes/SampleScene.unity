@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 434271158}
   - component: {fileID: 434271162}
   - component: {fileID: 434271154}
+  - component: {fileID: 434271163}
   m_Layer: 0
   m_Name: Prototype Runner
   m_TagString: Untagged
@@ -382,7 +383,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &434271162
 MonoBehaviour:
@@ -398,6 +399,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowHierarchyWindowOverlay: 1
   PostLoadDelayFrames: 1
+--- !u!114 &434271163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434271153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8b9332462b42e3a927309ead53a612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &439018338
 GameObject:
   m_ObjectHideFlags: 3
@@ -631,7 +644,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &655865291
 GameObject:
@@ -734,7 +747,7 @@ Transform:
   - {fileID: 881063061}
   - {fileID: 1430114573}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1103,7 +1116,7 @@ Transform:
   m_Children:
   - {fileID: 2011787155}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1022401160 stripped
 RectTransform:

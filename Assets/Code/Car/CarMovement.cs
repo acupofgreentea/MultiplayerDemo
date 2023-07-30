@@ -24,7 +24,7 @@ public class CarMovement : NetworkBehaviour
         if (!GetInput(out PlayerNetworkInput playerNetworkInput)) 
             return;
 
-        if (Joystick.Instance.HasInput == false)
+        if (!playerNetworkInput.HasInput)
             return;
 
         moveForce += transform.forward * moveSpeed *  Runner.DeltaTime;
