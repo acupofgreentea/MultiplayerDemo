@@ -7,7 +7,7 @@ public class WreckingBall : NetworkBehaviour
     public WreckingBallMovement WreckingBallMovement { get; private set; }
     public WreckingBallStateController WreckingBallStateController { get; private set; }
 
-    [Networked] public Car Car { get; set; }
+    [field: SerializeField] public Car Car { get; set; }
 
     public Transform CarInterpolationTarget => Car.transform;
 

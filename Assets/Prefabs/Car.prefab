@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 7763239182726120740}
   - component: {fileID: 680661632651089871}
   - component: {fileID: 6932214739365644325}
-  - component: {fileID: 609518678816540967}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -279,6 +278,7 @@ MonoBehaviour:
   drag: 0.98
   steerAngle: 20
   traction: 1
+  _moveForce: {x: 0, y: 0, z: 0}
 --- !u!114 &680661632651089871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   InterpolationSpace: 1
   InterpolationTarget: {fileID: 6067921462758971935}
   InterpolateErrorCorrection: 1
@@ -322,24 +322,6 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
---- !u!143 &609518678816540967
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7763239182726120741}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8877391978725223634
 GameObject:
   m_ObjectHideFlags: 0
