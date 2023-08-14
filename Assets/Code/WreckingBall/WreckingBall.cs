@@ -1,3 +1,4 @@
+using System.Collections;
 using Fusion;
 using UnityEngine;
 
@@ -6,20 +7,23 @@ public class WreckingBall : NetworkBehaviour
     public WreckingBallMovement WreckingBallMovement { get; private set; }
     public WreckingBallStateController WreckingBallStateController { get; private set; }
 
-    public Car Car { get; private set; }
+    [Networked] public Car Car { get; set; }
 
-    public Transform CarInterpolationTarget => Car.transform.GetChild(0);
-    
+    public Transform CarInterpolationTarget => Car.transform;
+
+    private NetworkObject networkObject;
+
+    public NetworkObject NetworkObject => networkObject ??= GetComponent<NetworkObject>();
+
     private void Awake()
     {
         WreckingBallMovement = GetComponent<WreckingBallMovement>().Init(this);
         WreckingBallStateController = GetComponent<WreckingBallStateController>().Init(this);
     }
 
-    public void OnSpawn(Car car)
+    public override void Spawned()
     {
-        this.Car = car;
-        car.WreckingBall = this;
-        WreckingBallMovement.FollowPos = car.CarBallFollowPos;
+        networkObject = GetComponent<NetworkObject>();
+        transform.SetParent(null);
     }
 }

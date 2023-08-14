@@ -20,7 +20,7 @@ public class WreckingBallStateController : StateControllerBase<WreckingBallState
         IEnumerator Delay()
         {
             yield return null;
-            ChangeState(WreckingBallStates.TurnAround);
+            ChangeState(WreckingBallStates.Follow);
         }
     }
 
@@ -31,22 +31,29 @@ public class WreckingBallStateController : StateControllerBase<WreckingBallState
         stateDictionary = new Dictionary<WreckingBallStates, WreckingBallStateBase>
         {
             {
-                WreckingBallStates.Follow, new WreckingBallFollowState(wreckingBall, wreckingBallWreckingBallMovement.LerpSpeed,
-                    wreckingBallWreckingBallMovement.Radius, wreckingBallWreckingBallMovement.Model) },
+                WreckingBallStates.Follow, new WreckingBallFollowState(wreckingBall, wreckingBallWreckingBallMovement.LerpSpeed) },
             
-            { WreckingBallStates.TurnAround, new WreckingBallTurnAroundState(wreckingBall, wreckingBallWreckingBallMovement.RotateSpeed, wreckingBallWreckingBallMovement.Model) },
+            { WreckingBallStates.TurnAround, new WreckingBallTurnAroundState(wreckingBall, wreckingBallWreckingBallMovement.RotateSpeed) },
         };
     }
 
     public override void FixedUpdateNetwork()
     {
-        CurrentState?.UpdateState();
+        if(!HasInputAuthority)
+            return;
+
+        //CurrentState?.UpdateState();
     }
 
     public override void ChangeState(WreckingBallStates type)
     {
+        var nextState = stateDictionary.GetValueOrDefault(type);
+        
+        if (CurrentState == nextState)
+            return;
+        
         CurrentState?.ExitState();
-        CurrentState = stateDictionary.GetValueOrDefault(type);
+        CurrentState = nextState;
         CurrentState?.EnterState();
     }
 }

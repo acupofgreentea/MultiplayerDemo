@@ -8,7 +8,7 @@ public class CarInputHandler : MonoBehaviour, INetworkRunnerCallbacks
 {
     private Joystick _joystick;
 
-    private void Awake()
+    private void OnEnable()
     {
         _joystick = Joystick.Instance;
     }
@@ -23,13 +23,13 @@ public class CarInputHandler : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        var playerInput = new PlayerNetworkInput
+        PlayerNetworkInput localInput = new PlayerNetworkInput
         {
             MovementInput = _joystick.Direction,
             HasInput = _joystick.HasInput
         };
         
-        input.Set(playerInput);
+        input.Set(localInput);
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)

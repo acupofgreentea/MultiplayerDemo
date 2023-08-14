@@ -1,19 +1,16 @@
+using System.Collections;
 using UnityEngine;
 using Fusion;
 
 public class Car : NetworkBehaviour
 {
     [field: SerializeField] public Transform CarBallFollowPos { get; private set; }
-    
-    public WreckingBall WreckingBall { get; set; }
+    [field: SerializeField] public WreckingBall WreckingBall { get; set; }
     public CarMovement CarMovement { get; private set; }
     public CarRopeHandler CarRopeHandler { get; private set; }
 
-    private NetworkRigidbody networkRigidbody;
-
     private void Awake()
     {
-        networkRigidbody = GetComponent<NetworkRigidbody>();
         CarMovement = GetComponent<CarMovement>().Init(this);
         CarRopeHandler = GetComponent<CarRopeHandler>().Init(this);
     }
@@ -22,7 +19,13 @@ public class Car : NetworkBehaviour
     {
         if (HasInputAuthority)
         {
-            Camera.main.GetComponent<CameraController>().OnPlayerSpawned(networkRigidbody.InterpolationTarget);
+            Camera.main.GetComponent<CameraController>().OnPlayerSpawned(transform);
         }
     }
-} 
+
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        if(WreckingBall != null)
+            runner.Despawn(WreckingBall.NetworkObject);
+    }
+}
