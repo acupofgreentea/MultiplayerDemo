@@ -9,14 +9,11 @@ public class Car : NetworkBehaviour
     public CarMovement CarMovement { get; private set; }
     public CarRopeHandler CarRopeHandler { get; private set; }
 
-    private void Awake()
+    public override void Spawned()
     {
         CarMovement = GetComponent<CarMovement>().Init(this);
         CarRopeHandler = GetComponent<CarRopeHandler>().Init(this);
-    }
 
-    public override void Spawned()
-    {
         if (HasInputAuthority)
         {
             Camera.main.GetComponent<CameraController>().OnPlayerSpawned(transform);

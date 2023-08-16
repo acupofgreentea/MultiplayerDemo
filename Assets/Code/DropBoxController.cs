@@ -1,11 +1,14 @@
 using Fusion;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DropBoxController : NetworkBehaviour
 {
     private NetworkObject networkObject;
 
-    private void Awake()
+    public static UnityAction OnDropboxInteracted {get; set;}
+
+    public override void Spawned()
     {
         networkObject = GetComponent<NetworkObject>();
     }
@@ -14,8 +17,10 @@ public class DropBoxController : NetworkBehaviour
     {
         if (!other.TryGetComponent(out Car car))
             return;
-
-        Debug.LogError("destroyed dropbox");
+        
+        OnDropboxInteracted?.Invoke();
+        
+        car.WreckingBall.WreckingBallStateController.ChangeState(WreckingBallStates.TurnAround);
         Runner.Despawn(networkObject);
     }
 }
