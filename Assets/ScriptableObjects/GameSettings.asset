@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8e6d0f77402174bb2ffeca2d6a9ab7, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: Assembly-CSharp::GameSettingSO
-  <CircleCloseTimer>k__BackingField: 3
+  <ZoneActiveTime>k__BackingField: 3
+  <ZoneCloseSequence>k__BackingField: 3
+  <FirstZoneRange>k__BackingField: 50
+  <EachZoneCloseAmount>k__BackingField: 10
+  <MinimumZoneRange>k__BackingField: 10

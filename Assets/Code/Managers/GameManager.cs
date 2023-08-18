@@ -1,25 +1,26 @@
+using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameManager : NetworkBehaviour
 {
-    [SerializeField] private GameSettingsSO gameSettingSO;
+    [field: SerializeField] public List<NetworkObject> Players {get; private set;}
 
-    [Networked] public TickTimer CircleCloseTimer {get; private set;}
-
-    public UnityAction OnCloseTimerExpired {get; set;}
-
-    public override void Spawned()
+    public void AddPlayer(NetworkObject player)
     {
-        CircleCloseTimer = TickTimer.CreateFromSeconds(Runner, 0f);
-    }
-    public override void FixedUpdateNetwork()
-    {
-        if(CircleCloseTimer.Expired(Runner))
+        if(Players.Contains(player))
         {
-            OnCloseTimerExpired?.Invoke();
-            CircleCloseTimer = TickTimer.CreateFromSeconds(Runner, gameSettingSO.CircleCloseTimer);
+            Debug.LogError("Player is already added");
+            return;
         }
+
+        Players.Add(player);
     }
+
+    public void RemovePlayer(NetworkObject player)
+    {
+        Players.Remove(player);
+    }
+
+   
 }

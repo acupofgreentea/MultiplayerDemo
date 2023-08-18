@@ -2,39 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerSpawner : NetworkBehaviour, IPlayerJoined, IPlayerLeft
 {
-    [SerializeField] private WreckingBall wreckingBallPrefab;
     [SerializeField] private NetworkObject playerPrefab;
 
     [SerializeField] private List<Transform> spawnPoints;
-    public static UnityAction<NetworkObject> OnPlayerSpawned { get; set; }
 
     private void SpawnPlayer(PlayerRef playerRef)
     {
+        NetworkObject playerObject = null;
         if (Runner.IsServer)
         {
             int index = playerRef % spawnPoints.Count;
             Vector3 spawnPoint = spawnPoints[index].position;
             
-            var playerObject = Runner.Spawn(playerPrefab, spawnPoint, Quaternion.identity, playerRef);
+            playerObject = Runner.Spawn(playerPrefab, spawnPoint, Quaternion.identity, playerRef);
             
             Runner.SetPlayerObject(playerRef, playerObject);
-            
-            StartCoroutine(Delay());
-            IEnumerator Delay()
-            {
-                yield return null;       
-                Car car = playerObject.GetComponent<Car>();
-
-                var wreckingBall = Runner.Spawn(wreckingBallPrefab, car.CarBallFollowPos.position);
-                wreckingBall.OnSpawn(car);
-            }
+            Managers.Instance.GameManager.AddPlayer(playerObject);
         }
     }
-
 
     public void PlayerJoined(PlayerRef player)
     {
@@ -55,6 +43,7 @@ public class PlayerSpawner : NetworkBehaviour, IPlayerJoined, IPlayerLeft
                 Runner.Despawn(playerObject);
                 
                 Runner.SetPlayerObject(playerRef, null);
+                Managers.Instance.GameManager.RemovePlayer(playerObject);
             }
         }
     }
